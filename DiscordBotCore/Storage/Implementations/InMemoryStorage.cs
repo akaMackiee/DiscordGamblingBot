@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscordBotCore.Storage.Implementations
 {
@@ -8,6 +7,11 @@ namespace DiscordBotCore.Storage.Implementations
     {
 
         private readonly Dictionary<string, object> _dictionary = new Dictionary<string, object>();
+
+        public InMemoryStorage()
+        {
+            Console.WriteLine("InMemoryStorage Constructor");
+        }
 
         public T RestoreObject<T>(string key)
         {
