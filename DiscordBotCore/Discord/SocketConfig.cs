@@ -8,13 +8,13 @@ namespace DiscordBotCore.Discord
     {
         public static DiscordSocketConfig GetDefault()
         {
-            return new DiscordSocketConfig();
+            return new DiscordSocketConfig()
             {
-                LogLevel = LogSeverity.Verbose;
-            }
+                LogLevel = LogSeverity.Verbose
+            };
         }
 
-        public static DiscordSocketConfig Generate()
+        public static DiscordSocketConfig GetNew()
         {
             return new DiscordSocketConfig();
         }
