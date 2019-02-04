@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity;
+using Unity.Resolution;
 
 namespace DiscordBotCore
 {
@@ -29,7 +30,7 @@ namespace DiscordBotCore
 
         public static T Resolve<T>()
         {
-            return (T)Container.Resolve(typeof(T), string.Empty, new );
+            return (T)Container.Resolve(typeof(T), string.Empty, new CompositeResolverOverride());
         }
     }
 }
