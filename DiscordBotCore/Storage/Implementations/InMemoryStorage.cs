@@ -6,10 +6,6 @@ namespace DiscordBotCore.Storage.Implementations
 {
     class InMemoryStorage : IDataStorage
     {
-        public InMemoryStorage()
-        {
-            Console.WriteLine("InMemoryStorage constructor");
-        }
 
         private readonly Dictionary<string, object> _dictionary = new Dictionary<string, object>();
 
