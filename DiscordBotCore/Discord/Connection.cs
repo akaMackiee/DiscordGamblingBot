@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Discord;
+﻿using System.Threading.Tasks;
 using Discord.WebSocket;
 using DiscordBotCore.Discord.Entities;
 

@@ -1,6 +1,5 @@
 ﻿using DiscordBotCore.Storage;
 using DiscordBotCore.Storage.Implementations;
-using System;
 using Unity;
 using Unity.Resolution;
 using Unity.Lifetime;
@@ -26,6 +25,7 @@ namespace DiscordBotCore
             _container = new UnityContainer();
             _container.RegisterType<IDataStorage, InMemoryStorage>(new ContainerControlledLifetimeManager());
             _container.RegisterType<ILogger, Logger>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<Discord.Connection>(new ContainerControlledLifetimeManager());
         }
 
         public static T Resolve<T>()
