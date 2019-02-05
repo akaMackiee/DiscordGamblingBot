@@ -1,6 +1,6 @@
-﻿using DiscordBotCore.Storage;
+﻿using DiscordBotCore.Discord;
+using DiscordBotCore.Discord.Entities;
 using System;
-using System.Threading.Tasks;
 
 namespace DiscordBotCore
 {
@@ -10,6 +10,13 @@ namespace DiscordBotCore
         {
             Unity.RegisterTypes();
             Console.WriteLine("Hello sugar");
+            var DiscordBotConfig = new GamblingBotConfig
+            {
+                Token = "ABC",
+                SocketConfig = SocketConfig.GetDefault()
+            };
+
+            var connection = Unity.Resolve<Connection>(); 
         }
     }
 }
