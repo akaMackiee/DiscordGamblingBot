@@ -10,12 +10,13 @@ namespace DiscordBotCore.Discord
     {
         private readonly DiscordSocketClient _client;
         private readonly DiscordLogger _logger;
-        private readonly CommandHandler _handler;
+        private readonly CommandHandler _command;
 
-        public Connection(DiscordLogger logger, DiscordSocketClient client)
+        public Connection(DiscordLogger logger, DiscordSocketClient client, CommandHandler command)
         {
             _logger = logger;
             _client = client;
+            _command = command;
         }
 
         internal async Task ConnectAsync(GamblingBotConfig config)

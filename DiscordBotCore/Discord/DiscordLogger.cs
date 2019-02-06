@@ -1,5 +1,6 @@
 ﻿using Discord;
 using System.Threading.Tasks;
+using System;
 
 namespace DiscordBotCore.Discord
 {
@@ -15,6 +16,7 @@ namespace DiscordBotCore.Discord
         public Task Log(LogMessage logMsg)
         {
             _logger.Log(logMsg.Message);
+            Console.WriteLine(logMsg);
             return Task.CompletedTask;
         }
     }
