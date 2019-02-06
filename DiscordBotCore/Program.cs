@@ -10,17 +10,17 @@ namespace DiscordBotCore
     internal class Program
     {
         private static async Task Main()
-
         {
             Unity.RegisterTypes();
-            Console.WriteLine("Hello sugar");
 
             var storage = Unity.Resolve<IDataStorage>();
-
+            var botConfig = storage.RestoreObject<BotConfig>("Config/ConfigFile");
             var connection = Unity.Resolve<Connection>();
+            Console.WriteLine("Prefix: " + botConfig.cmdPrefix);
             await connection.ConnectAsync(new GamblingBotConfig
             {
-                Token = storage.RestoreObject<string>("Config/BotToken")
+                Token = botConfig.BotToken, 
+                Prefix = botConfig.cmdPrefix
             });
         }
     }

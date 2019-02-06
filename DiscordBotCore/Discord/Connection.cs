@@ -2,6 +2,7 @@
 using Discord;
 using Discord.WebSocket;
 using DiscordBotCore.Discord.Entities;
+using DiscordBotCore.Discord.Services;
 
 namespace DiscordBotCore.Discord
 {
@@ -9,6 +10,7 @@ namespace DiscordBotCore.Discord
     {
         private readonly DiscordSocketClient _client;
         private readonly DiscordLogger _logger;
+        private readonly CommandHandler _handler;
 
         public Connection(DiscordLogger logger, DiscordSocketClient client)
         {
