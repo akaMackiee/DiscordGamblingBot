@@ -9,24 +9,23 @@ namespace DiscordBotCore.Discord.Services
 {
     public class CommandHandler
     {
-        public CommandHandler(IServiceProvider services, DiscordSocketClient client, CommandService service, GamblingBotConfig botConfig)
+        public CommandHandler(DiscordSocketClient client, CommandService service, GamblingBotConfig botConfig)
         {
             _service = service;
             _client = client;
-            _services = services;
             _botConfig = botConfig;
         }
 
         DiscordSocketClient _client;
         CommandService _service;
-        IServiceProvider _services;
+        private readonly IServiceProvider _services;
         GamblingBotConfig _botConfig;
 
         public async Task InitializeAsync(DiscordSocketClient client)
         {
             _client = client;
             _service = new CommandService();
-            await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
+            await _service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
             _client.MessageReceived += HandleCommandAsync;
         }
 
