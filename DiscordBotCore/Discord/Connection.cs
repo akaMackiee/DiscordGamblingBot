@@ -8,15 +8,14 @@ namespace DiscordBotCore.Discord
 {
     public class Connection
     {
-        private readonly DiscordSocketClient _client;
-        private readonly DiscordLogger _logger;
-        private readonly CommandHandler _command;
+        DiscordSocketClient _client;
+        DiscordLogger _logger;
+        CommandHandler _handler;
 
-        public Connection(DiscordLogger logger, DiscordSocketClient client, CommandHandler command)
+        public Connection(DiscordSocketClient client, DiscordLogger logger)
         {
-            _logger = logger;
             _client = client;
-            _command = command;
+            _logger = logger;
         }
 
         internal async Task ConnectAsync(GamblingBotConfig config)
@@ -24,6 +23,9 @@ namespace DiscordBotCore.Discord
             _client.Log += _logger.Log;
 
             await _client.LoginAsync(TokenType.Bot, config.Token);
+            Global.Client = _client;
+            _handler = new CommandHandler();
+            await _handler.InitializeAsync(_client);
             await _client.StartAsync();
 
             await Task.Delay(-1);
