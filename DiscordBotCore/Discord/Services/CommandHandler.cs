@@ -18,7 +18,6 @@ namespace DiscordBotCore.Discord.Services
 
         DiscordSocketClient _client;
         CommandService _service;
-        private readonly IServiceProvider _services;
         GamblingBotConfig _botConfig;
 
         public async Task InitializeAsync(DiscordSocketClient client)
