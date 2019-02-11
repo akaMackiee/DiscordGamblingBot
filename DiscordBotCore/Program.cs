@@ -20,7 +20,7 @@ namespace DiscordBotCore
             await connection.ConnectAsync(new GamblingBotConfig
             {
                 Token = botConfig.BotToken, 
-                Prefix = botConfig.cmdPrefix
+                Prefix = botConfig.cmdPrefix    
             });
         }
     }

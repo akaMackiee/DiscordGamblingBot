@@ -16,7 +16,6 @@ namespace DiscordBotCore.Discord
         public Task Log(LogMessage logMsg)
         {
             _logger.Log(logMsg.Message);
-            Console.WriteLine(logMsg);
             return Task.CompletedTask;
         }
     }

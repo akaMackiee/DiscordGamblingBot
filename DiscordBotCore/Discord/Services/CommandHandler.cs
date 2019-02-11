@@ -9,22 +9,16 @@ namespace DiscordBotCore.Discord.Services
 {
     public class CommandHandler
     {
-        public CommandHandler(IServiceProvider services, DiscordSocketClient client, CommandService service, GamblingBotConfig botConfig)
-        {
-            _service = service;
-            _client = client;
-            _services = services;
-            _botConfig = botConfig;
-        }
-
         DiscordSocketClient _client;
         CommandService _service;
-        IServiceProvider _services;
         GamblingBotConfig _botConfig;
 
         public async Task InitializeAsync()
         {
             await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
+            _client = client;
+            _service = new CommandService();
+            await _service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
             _client.MessageReceived += HandleCommandAsync;
         }
 
@@ -37,7 +31,7 @@ namespace DiscordBotCore.Discord.Services
             if (msg.HasStringPrefix(_botConfig.Prefix, ref argPos)
                 || msg.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
-                var result = await _service.ExecuteAsync(context, argPos, _services);
+                var result = await _service.ExecuteAsync(context, argPos, null);
                 if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
                 {
                     Console.WriteLine(result.ErrorReason);
