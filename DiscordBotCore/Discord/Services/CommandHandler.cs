@@ -22,10 +22,8 @@ namespace DiscordBotCore.Discord.Services
         IServiceProvider _services;
         GamblingBotConfig _botConfig;
 
-        public async Task InitializeAsync(DiscordSocketClient client)
+        public async Task InitializeAsync()
         {
-            _client = client;
-            _service = new CommandService();
             await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
             _client.MessageReceived += HandleCommandAsync;
         }
