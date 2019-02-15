@@ -4,6 +4,7 @@ using DiscordBotCore.Storage;
 using DiscordBotCore.Storage.Implementations;
 using System;
 using System.Threading.Tasks;
+using DiscordBotCore.Discord.Handlers;
 
 namespace DiscordBotCore
 {
@@ -16,12 +17,16 @@ namespace DiscordBotCore
             var storage = Unity.Resolve<IDataStorage>();
             var botConfig = storage.RestoreObject<BotConfig>("Config/ConfigFile");
             var connection = Unity.Resolve<Connection>();
+            var CommandInit = Unity.Resolve<CommandHandler>();
+
             Console.WriteLine("Prefix: " + botConfig.cmdPrefix);
             await connection.ConnectAsync(new GamblingBotConfig
             {
-                Token = botConfig.BotToken, 
-                Prefix = botConfig.cmdPrefix    
+                Token = botConfig.BotToken
             });
+            await CommandInit.InitializeAsync();
+
+
         }
     }
 }

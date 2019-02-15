@@ -1,6 +1,4 @@
-﻿using Discord.WebSocket;
-
-namespace DiscordBotCore.Discord.Entities
+﻿namespace DiscordBotCore.Discord.Entities
 {
     public class GamblingBotConfig
     {
