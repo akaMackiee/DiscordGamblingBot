@@ -3,7 +3,6 @@ using DiscordBotCore.Storage;
 using DiscordBotCore.Storage.Implementations;
 using Unity;
 using Unity.Resolution;
-using Unity.Lifetime;
 using Unity.Injection;
 using DiscordBotCore.Discord;
 
