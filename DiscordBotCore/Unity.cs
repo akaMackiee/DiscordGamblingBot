@@ -1,6 +1,7 @@
 ﻿using Discord.WebSocket;
 using DiscordBotCore.Storage;
 using DiscordBotCore.Storage.Implementations;
+using DiscordBotCore.Discord.Handlers;
 using Unity;
 using Unity.Resolution;
 using Unity.Injection;
@@ -29,7 +30,8 @@ namespace DiscordBotCore
             _container.RegisterSingleton<ILogger, Logger>();
             _container.RegisterType<DiscordSocketClient>(new InjectionFactory(i => SocketConfig.GetDefault()));
             _container.RegisterSingleton<DiscordSocketClient>(new InjectionConstructor(typeof(DiscordSocketConfig)));
-            _container.RegisterSingleton<Discord.Connection>();
+            _container.RegisterSingleton<Connection>();
+            _container.RegisterSingleton<CommandHandler>();
         }
 
         public static T Resolve<T>()
